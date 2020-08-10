@@ -17,7 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "BASE_URL", "\"https://dapi.kakao.com/\"")
+        buildConfigField("String", "BASE_URL", "\"https://dapi.kakao.com\"")
     }
 
     buildTypes {
@@ -106,11 +106,6 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 
-    // Jackson Json Converter
-//    implementation 'com.fasterxml.jackson.core:jackson-core:2.8.10'
-//    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.8.6'
-//    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.10'
-
     // Bus
     implementation 'com.squareup:otto:1.3.8'
 
@@ -131,4 +126,5 @@ dependencies {
     // optional - RxJava support
     implementation "androidx.paging:paging-rxjava2:$rootProject.paging_version" // For Kotlin use paging-rxjava2-ktx
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

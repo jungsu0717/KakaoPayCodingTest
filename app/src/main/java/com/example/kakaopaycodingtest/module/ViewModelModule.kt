@@ -2,7 +2,9 @@ package com.example.kakaopaycodingtest.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.kakaopaycodingtest.ui.detail.DetailViewModel
 import com.example.kakaopaycodingtest.ui.main.MainViewModel
+import com.example.kakaopaycodingtest.ui.search.SearchViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -30,15 +32,13 @@ abstract class ViewModelModule {
     @ViewModelKey(MainViewModel::class)
     internal abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(LocalFragmentViewModel::class)
-//    internal abstract fun bindLocalFragmentViewModel(localFragmentViewModel: LocalFragmentViewModel): ViewModel
-//
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(SearchGitHubViewModel::class)
-//    internal abstract fun bindPageViewModel(pageViewModel: SearchGitHubViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchViewModel::class)
+    internal abstract fun bindSearchViewModel(searchViewModel: SearchViewModel): ViewModel
 
-    //Add more ViewModels here
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    internal abstract fun bindDetailViewModel(detailViewModel: DetailViewModel): ViewModel
 }

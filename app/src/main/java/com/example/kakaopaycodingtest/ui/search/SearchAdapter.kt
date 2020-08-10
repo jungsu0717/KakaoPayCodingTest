@@ -15,34 +15,38 @@ import com.example.kakaopaycodingtest.model.data.DocumentsData
  * Description:
  */
 
-class SearchAdapter : PagedListAdapter<DocumentsData, SearchViewHolder>(diffCallback) {
+class SearchAdapter : PagedListAdapter<DocumentsData, SearchViewHolder>(SearchDiffUtils()) {
 
-    var listener : ItemClickListener? = null
+    var listener: ItemClickListener? = null
 
     interface ItemClickListener {
-        fun onClick(id: Int)
-    }
-
-    companion object {
-        private val diffCallback = object : DiffUtil.ItemCallback<DocumentsData>() {
-            override fun areItemsTheSame(oldItem: DocumentsData, newItem: DocumentsData): Boolean =
-                oldItem.title == newItem.title
-
-            override fun areContentsTheSame(oldItem: DocumentsData, newItem: DocumentsData): Boolean =
-                oldItem.title == newItem.title
-        }
+        fun onClick(id: DocumentsData)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
             ItemSearchBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false), listener)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ), listener
+        )
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
+    }
+
+
+
+    class SearchDiffUtils : DiffUtil.ItemCallback<DocumentsData>() {
+        override fun areItemsTheSame(oldItem: DocumentsData, newItem: DocumentsData): Boolean {
+            return oldItem == oldItem
+        }
+
+        override fun areContentsTheSame(oldItem: DocumentsData, newItem: DocumentsData): Boolean {
+            return oldItem == newItem
+        }
     }
 
 }

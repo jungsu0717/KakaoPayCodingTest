@@ -25,7 +25,7 @@ class SearchPagedListRepo(
     private val compositeDisposable: CompositeDisposable
 ) {
 
-    fun postsSearchBook(requestData: RequestData): LiveData<PagedList<DocumentsData>> {
+    fun postsSearchBook(requestData: RequestData): DataRepository<DocumentsData> {
         val sourceFactory = SearchDataFactory(dataManager, compositeDisposable, requestData)
         val livePagedList = sourceFactory.toLiveData(
             config = Config(
@@ -34,9 +34,19 @@ class SearchPagedListRepo(
                 prefetchDistance = 4
             )
         )
-        return livePagedList
+        return DataRepository(
+            pagedList = livePagedList,
+            networkState = Transformations.switchMap(sourceFactory.searchLiveData) {
+                it.initLoad
+            },
+            refresh = {
+                sourceFactory.searchLiveData.value?.invalidate()
+            }
+        )
 
     }
+
+
 
 }
 

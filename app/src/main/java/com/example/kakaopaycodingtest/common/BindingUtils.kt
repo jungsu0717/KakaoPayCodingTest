@@ -1,10 +1,9 @@
 package com.example.kakaopaycodingtest.common
 
-import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -12,6 +11,12 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.example.kakaopaycodingtest.R
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
+
 /**
  * KakaoPayCodingTest
  * Class: BindingUtils
@@ -20,19 +25,19 @@ import com.example.kakaopaycodingtest.R
  * Description:
  */
 
-class BindingUtils {
+object BindingUtils {
 
-    @SuppressLint("CheckResult")
-    @BindingAdapter("imageUrl")
+    @BindingAdapter("loadImage")
+    @JvmStatic
     fun loadImage(
-        imageView: ImageView,
+        imageView: AppCompatImageView,
         imageUrl: String?
     ) {
 
         val options = RequestOptions()
 
-        options.placeholder(R.drawable.ic_launcher_background)
-        options.error(R.drawable.ic_launcher_background)
+        options.placeholder(R.drawable.book_no_img)
+        options.error(R.drawable.book_no_img)
 
         if (imageUrl != null) {
             try {
@@ -73,6 +78,48 @@ class BindingUtils {
                 e.printStackTrace()
             }
         }
+    }
+
+    @BindingAdapter("arrayText")
+    @JvmStatic
+    fun arrayText(
+        textView: AppCompatTextView,
+        text: List<String>?
+    ) {
+        val tempText = StringBuilder()
+        text.let {
+            it?.forEach { string ->
+                if (tempText.isNotEmpty()) {
+                    tempText.append(" / ")
+                }
+                tempText.append(string)
+            }
+        }
+        textView.text = tempText
+    }
+
+
+    @BindingAdapter("parseDate")
+    @JvmStatic
+    fun parseDate(
+        textView: AppCompatTextView,
+        date: Date?
+    ) {
+
+        try {
+
+            val cal = Calendar.getInstance()
+
+            if (date != null){
+                cal.time = date
+                val df: DateFormat = SimpleDateFormat("yyyy-MM-dd")
+                textView.text = df.format(cal.time)
+            }
+
+        } catch (e: java.lang.Exception) {
+            e.printStackTrace()
+        }
+
     }
 
 }

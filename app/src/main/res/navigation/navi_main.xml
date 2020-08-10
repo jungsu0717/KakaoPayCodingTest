@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/charactersFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
-        android:id="@+id/charactersFragment"
+        android:id="@+id/searchFragment"
         android:name="com.example.kakaopaycodingtest.ui.search.SearchFragment"
-        android:label="Characters"
+        android:label="도서 검색"
         tools:layout="@layout/fragment_search" >
         <action
             android:id="@+id/action_go_detail"
-            app:destination="@id/characterDetailFragment" />
+            app:destination="@id/detailFragment" />
 
     </fragment>
     <fragment
-        android:id="@+id/characterDetailFragment"
+        android:id="@+id/detailFragment"
         android:name="com.example.kakaopaycodingtest.ui.detail.DetailFragment"
-        android:label="Character Detail"
+        android:label="도서 상세"
         tools:layout="@layout/fragment_detail" />
 </navigation>

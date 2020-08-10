@@ -19,8 +19,16 @@ import javax.inject.Inject
 
 class App : MultiDexApplication(), HasAndroidInjector {
 
+    init {
+        instance = this
+    }
+
     companion object{
-        lateinit var context : Context
+        private var instance: App? = null
+
+        fun applicationContext(): Context {
+            return instance!!.applicationContext
+        }
     }
 
     @Inject

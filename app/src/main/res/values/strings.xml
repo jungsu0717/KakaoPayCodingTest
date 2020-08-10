@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">도서검색</string>
     <string name="title_search">검색</string>
-    <string name="kakao_api_key">c43ee70e620bcf054840298341b3e1cb</string>
+    <string name="network_loading">로딩중</string>
+    <string name="network_loaded">로딩 완료</string>
+    <string name="network_error">오류</string>
+    <string name="list_empty">검색결과가 없습니다.</string>
+
+    <string name="item_book_title">제목</string>
+    <string name="item_book_contents">내용</string>
+    <string name="item_book_authors">저자</string>
+    <string name="item_book_translator">번역</string>
+    <string name="item_book_sub_info">출판 / 도서번호 </string>
+    <string name="item_book_price">가격 / 할인가 / 판매상태</string>
+    <string name="item_book_web">웹페이지에서 보기</string>
+
+    <string name="item_book_sub_info_value">출판 : %s \n도서번호 : %s</string>
+    <string name="item_book_price_value">가격 : %s \n할인가 : %s \n판매상태 : %s</string>
+
+
+
+
 </resources>

@@ -22,7 +22,8 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @Headers("Authorization: KakaoAK @{R.string.kakao_api_key}")
+
+    @Headers("Authorization: KakaoAK deaf578bd2a2685d649a30cf7b6baa11")
     @GET("/v3/search/book")
     fun getBookInfo(
         @Query("query") query : String,

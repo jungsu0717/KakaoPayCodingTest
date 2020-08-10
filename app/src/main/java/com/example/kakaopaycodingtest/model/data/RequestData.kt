@@ -1,7 +1,5 @@
 package com.example.kakaopaycodingtest.model.data
 
-import androidx.lifecycle.MutableLiveData
-
 /**
  * KakaoPayCodingTest
  * Class: RequestData
@@ -10,13 +8,13 @@ import androidx.lifecycle.MutableLiveData
  * Description:
  */
 
-data class RequestData (
+data class RequestData(
 
-    var keyWord : String,
+    var keyWord: String = "",
 
-    var sort : String?,
+    var sort: String?,
 
-    var page : Int?,
+    var page: Int?,
 
-    var target : String?
+    var target: String?
 )

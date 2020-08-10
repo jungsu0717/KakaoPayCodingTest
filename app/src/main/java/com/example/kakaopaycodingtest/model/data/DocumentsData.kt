@@ -1,5 +1,7 @@
 package com.example.kakaopaycodingtest.model.data
 
+import com.example.kakaopaycodingtest.common.CommonFunc
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -23,4 +25,15 @@ data class DocumentsData(
     var sale_price: Int,
     var thumbnail: String,
     var status: String
-)
+) : Serializable {
+
+    fun getPriceComma() : String? {
+        val temp = CommonFunc.makeMoneyType(price)
+        return if (temp != null) "${temp}원" else{ "" }
+    }
+
+    fun getSalePriceComma() : String? {
+        val temp = CommonFunc.makeMoneyType(sale_price)
+        return if (temp != null) "${temp}원" else{ "" }
+    }
+}

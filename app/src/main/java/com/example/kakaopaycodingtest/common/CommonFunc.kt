@@ -1,22 +1,15 @@
 package com.example.kakaopaycodingtest.common
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.widget.AppCompatImageView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.Target
 import com.example.kakaopaycodingtest.R
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 
 /**
  * KakaoPayCodingTest
@@ -67,56 +60,16 @@ class CommonFunc {
             return false
         }
 
-        @SuppressLint("CheckResult")
-        fun loadImageUrl(
-            imageView: AppCompatImageView,
-            imageUrl: String?
-        ) {
-            val options = RequestOptions()
-
-            options.placeholder(R.drawable.ic_launcher_background)
-            options.error(R.drawable.ic_launcher_background)
-
-            if (imageUrl != null) {
-                try {
-                    Glide.with(imageView.context)
-                        .load(imageUrl)
-                        .apply(options)
-                        .listener(object : RequestListener<Drawable?> {
-                            override fun onLoadFailed(
-                                e: GlideException?,
-                                model: Any,
-                                target: Target<Drawable?>,
-                                isFirstResource: Boolean
-                            ): Boolean {
-
-
-                                var error: String? = "Error : "
-                                if (e != null) {
-                                    error += e.message
-                                }
-                                error += " Image Url : $imageUrl"
-
-                                println(error)
-                                return false
-                            }
-
-                            override fun onResourceReady(
-                                resource: Drawable?,
-                                model: Any,
-                                target: Target<Drawable?>,
-                                dataSource: DataSource,
-                                isFirstResource: Boolean
-                            ): Boolean {
-                                return false
-                            }
-                        })
-                        .into(imageView)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
+        fun makeMoneyType(price : Int): String? {
+            val format = "#,##0"
+            val df = DecimalFormat(format)
+            val dfs = DecimalFormatSymbols()
+            dfs.groupingSeparator = ',' // 구분자를 ,로
+            df.groupingSize = 3 // 3자리 단위마다 구분자처리 한다.
+            df.decimalFormatSymbols = dfs
+            return df.format(price.toLong())
         }
+
 
     }
 }

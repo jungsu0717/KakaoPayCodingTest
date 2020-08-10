@@ -10,6 +10,7 @@ import com.example.kakaopaycodingtest.common.rx.SchedulerProvider
 import com.example.kakaopaycodingtest.model.data.DocumentsData
 import com.example.kakaopaycodingtest.model.data.RequestData
 import com.example.kakaopaycodingtest.model.manager.DataManager
+import com.example.kakaopaycodingtest.repository.NetworkState
 import com.example.kakaopaycodingtest.repository.SearchPagedListRepo
 import javax.inject.Inject
 
@@ -23,35 +24,29 @@ constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) :
         schedulerProvider
     ) {
 
+    private val repository = SearchPagedListRepo(dataManager, getCompositeDisposable())
 
-    lateinit var requestData : MutableLiveData<RequestData>
+    val requestData = MutableLiveData<RequestData>()
 
     private val searchRepo = map(requestData){
-        SearchPagedListRepo(
-            dataManager, getCompositeDisposable()
-        ).postsSearchBook(it)
+        repository.postsSearchBook(it)
     }
 
-    var searchData : LiveData<PagedList<DocumentsData>> = switchMap(searchRepo) {it}
-//
-//    fun getSearchUser(keyWord: String, sort: String?, page: Int?, target: String?) {
-//
-//        getCompositeDisposable().add(
-//            getDataManager().getBookInfo(keyWord, sort, page, target)
-//                .subscribeOn(getSchedulerProvider().io())
-//                .observeOn(getSchedulerProvider().ui())
-//                .subscribe({ data ->
-//
-//                    searchData.postValue(data)
-//
-//                    setIsLoading(false)
-//                    getNavigator()!!.ProgressOff()
-//                }, {
-//                    getNavigator()?.onError()
-//                    getNavigator()?.ProgressOff()
-//                })
-//        )
-//    }
+
+    var searchData : LiveData<PagedList<DocumentsData>> = switchMap(searchRepo) {
+        it.pagedList
+    }
+
+    var networkState : LiveData<NetworkState> = switchMap(searchRepo) {it.networkState}
+
+
+    fun listIsEmpty(): Boolean {
+        return searchData?.value?.isEmpty() ?: true
+    }
+
+    fun refresh() {
+        searchRepo.value?.refresh?.invoke()
+    }
 
 
 }

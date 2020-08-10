@@ -1,13 +1,25 @@
 package com.example.kakaopaycodingtest.ui.detail
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.kakaopaycodingtest.base.BaseViewModel
+import com.example.kakaopaycodingtest.common.rx.SchedulerProvider
+import com.example.kakaopaycodingtest.model.data.DocumentsData
+import com.example.kakaopaycodingtest.model.manager.DataManager
+import javax.inject.Inject
 
-class DetailViewModel : ViewModel() {
+class DetailViewModel
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+
+@Inject
+constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) :
+    BaseViewModel<DetailView>(
+        dataManager,
+        schedulerProvider
+    ) {
+
+    val liveData = MutableLiveData<DocumentsData>()
+
+    fun goDetailPage(url : String?){
+        getNavigator()?.goDetail(url)
     }
-    val text: LiveData<String> = _text
 }

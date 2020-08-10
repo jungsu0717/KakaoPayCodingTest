@@ -24,13 +24,12 @@ class SearchViewHolder(
 ) : BaseViewHolder(binding.root) {
 
     init {
-        binding.root.setOnClickListener { listener?.onClick(0) }
     }
 
     override fun onBind(data: Any) {
-
         if (data is DocumentsData){
-
+            binding.root.setOnClickListener { listener?.onClick(data) }
+            binding.data = data
         }
     }
 

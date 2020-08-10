@@ -12,9 +12,9 @@ import com.google.gson.annotations.SerializedName
  * Description:
  */
 
-abstract class ResponseBody {
+class ResponseBody {
 
-    @SerializedName("MetaData")
+    @SerializedName("meta")
     val meta: MetaData? = null
 
     @SerializedName("documents")
