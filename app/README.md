@@ -8,7 +8,7 @@ categories: Android Kotlin
 
 * 스크린샷
 * 개발환경
-* apk 다운로
+* apk 다운로드
 * 외부 라이브러리
 * 적용기술
 
@@ -35,6 +35,10 @@ categories: Android Kotlin
         minSdkVersion 16
         targetSdkVersion 29
 ~~~
+
+# apk 다운로드
+링크 : https://drive.google.com/file/d/1xJc9nE5K_o_J0SsAtb-Tw_o45o0Y9sOO/view?usp=sharing
+
 
 # 외부 라이브러리
 ~~~kotlin
