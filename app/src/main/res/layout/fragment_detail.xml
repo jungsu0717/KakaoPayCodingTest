@@ -127,6 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:visibility="@{viewModel.liveData.translators.size() > 0 ? View.VISIBLE : View.GONE}"
                     app:layout_constraintTop_toBottomOf="@id/cons_detail_authors">
 
                     <androidx.appcompat.widget.AppCompatTextView
