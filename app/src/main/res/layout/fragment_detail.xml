@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.kakaopaycodingtest.ui.detail.DetailViewModel" />
+            type="com.example.paging.ui.detail.DetailViewModel" />
 
     </data>
 

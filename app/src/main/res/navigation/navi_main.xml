@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.example.kakaopaycodingtest.ui.search.SearchFragment"
+        android:name="com.example.paging.ui.search.SearchFragment"
         android:label="도서 검색"
         tools:layout="@layout/fragment_search" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.kakaopaycodingtest.ui.detail.DetailFragment"
+        android:name="com.example.paging.ui.detail.DetailFragment"
         android:label="도서 상세"
         tools:layout="@layout/fragment_detail" />
 </navigation>

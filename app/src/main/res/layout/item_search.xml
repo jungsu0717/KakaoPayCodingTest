@@ -11,7 +11,7 @@
 
         <variable
             name="data"
-            type="com.example.kakaopaycodingtest.model.data.DocumentsData" />
+            type="com.example.paging.model.data.DocumentsData" />
 
     </data>
 
