@@ -1,6 +1,6 @@
 ---
-title: "카카오페이 코딩 테스트"
-date: 2020-08-10
+title: "Kotlin 예제"
+date: 2020-09-08
 categories: Android Kotlin
 ---
 
@@ -31,9 +31,6 @@ categories: Android Kotlin
 minSdkVersion 16
 targetSdkVersion 29
 ~~~
-
-# apk 다운로드
-https://drive.google.com/file/d/1xJc9nE5K_o_J0SsAtb-Tw_o45o0Y9sOO/view?usp=sharing
 
 
 # 외부 라이브러리
